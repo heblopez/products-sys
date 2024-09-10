@@ -25,25 +25,22 @@
 
 			<div class="form-group">
 				<label for="bodega">Bodega</label>
-				<select id="bodega" name="bodega">
-					<option value="Bodega 1">Bodega 1</option>
-					<option value="Bodega 2">Bodega 2</option>
+				<select id="bodegas" name="bodega">
+					<option value="">Seleccionar bodega</option>
 				</select>
 			</div>
 
 			<div class="form-group">
 				<label for="sucursal">Sucursal</label>
-				<select id="sucursal" name="sucursal">
-					<option value="Sucursal 1">Sucursal 1</option>
-					<option value="Sucursal 2">Sucursal 2</option>
+				<select id="sucursales" name="sucursal">
+					<option value="">Seleccionar sucursal</option>
 				</select>
 			</div>
 
 			<div class="form-group">
 				<label for="moneda">Moneda</label>
-				<select id="moneda" name="moneda">
-					<option value="DÓLAR">DÓLAR</option>
-					<option value="EURO">EURO</option>
+				<select id="monedas" name="moneda">
+					<option value="">Seleccionar moneda</option>
 				</select>
 			</div>
 
@@ -87,5 +84,4 @@
 		<button type="submit">Guardar Producto</button>
 	</form>
 </body>
-
 </html>
