@@ -15,12 +15,12 @@
 		<div class="inputs-wrapper">
 			<div class="form-group">
 				<label for="codigo">Código</label>
-				<input type="text" id="codigo" name="codigo" required>
+				<input type="text" id="codigo" name="codigo">
 			</div>
 
 			<div class="form-group">
 				<label for="nombre">Nombre</label>
-				<input type="text" id="nombre" name="nombre" required>
+				<input type="text" id="nombre" name="nombre">
 			</div>
 
 			<div class="form-group">
@@ -46,30 +46,30 @@
 
 			<div class="form-group">
 				<label for="precio">Precio</label>
-				<input type="number" id="precio" name="precio" step="0.01" required>
+				<input type="text" id="precio" name="precio">
 			</div>
 
 			<div class="form-group grid-cols-2">
 				<label>Material del Producto</label>
 				<div class="material-wrapper">
 					<div class="checkbox-group">
-						<input type="checkbox" id="plastico" name="material[]" value="Plástico">
+						<input type="checkbox" id="plastico" name="materiales" value="1">
 						<label for="plastico">Plástico</label>
 					</div>
 					<div class="checkbox-group">
-						<input type="checkbox" id="metal" name="material[]" value="Metal">
+						<input type="checkbox" id="metal" name="materiales" value="2">
 						<label for="metal">Metal</label>
 					</div>
 					<div class="checkbox-group">
-						<input type="checkbox" id="madera" name="material[]" value="Madera">
+						<input type="checkbox" id="madera" name="materiales" value="3">
 						<label for="madera">Madera</label>
 					</div>
 					<div class="checkbox-group">
-						<input type="checkbox" id="vidrio" name="material[]" value="Vidrio">
+						<input type="checkbox" id="vidrio" name="materiales" value="4">
 						<label for="vidrio">Vidrio</label>
 					</div>
 					<div class="checkbox-group">
-						<input type="checkbox" id="textil" name="material[]" value="Textil">
+						<input type="checkbox" id="textil" name="materiales" value="5">
 						<label for="textil">Textil</label>
 					</div>
 				</div>
@@ -83,5 +83,7 @@
 
 		<button type="submit">Guardar Producto</button>
 	</form>
+
+	<script src="script.js"></script>
 </body>
 </html>
