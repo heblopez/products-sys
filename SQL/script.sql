@@ -1,33 +1,33 @@
 create database products_sys;
 
-create table sucursales(
-  id serial primary key,
-  nombre varchar(50) not null
+CREATE TABLE bodegas (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
 );
 
-create table bodegas(
-  id serial primary key,
-  nombre varchar(50) not null,
-  sucursal_id integer references sucursales(id) on delete cascade
+CREATE TABLE sucursales (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    bodega_id INT REFERENCES bodegas(id) ON DELETE CASCADE
 );
 
 create table monedas(
-  id serial primary key,
-  nombre varchar(20) not null
+  id SERIAL PRIMARY KEY,
+  nombre VARCHAR(20) NOT NULL
 );
 
 create table productos
 (
-    id serial primary key,
-    codigo varchar(15) not null unique,
-    nombre varchar(50) not null,
-    bodega_id integer references bodegas(id),
-    sucursal_id integer references sucursales(id),
-    moneda_id integer references monedas(id),
-    precio numeric(10, 2) not null,
-    materiales integer[] not null,
-    descripcion text not null,
-    created_at timestamp default CURRENT_TIMESTAMP
+    id SERIAL PRIMARY KEY,
+    codigo VARCHAR(15) NOT NULL unique,
+    nombre VARCHAR(50) NOT NULL,
+    bodega_id INT REFERENCES bodegas(id),
+    sucursal_id INT REFERENCES sucursales(id),
+    moneda_id INT REFERENCES monedas(id),
+    precio NUMERIC(10, 2) NOT NULL,
+    materiales INT[] NOT NULL,
+    descripcion TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO monedas (id, nombre) VALUES
@@ -37,19 +37,19 @@ INSERT INTO monedas (id, nombre) VALUES
   (4, 'Peso mexicano')
 ;
 
-INSERT INTO sucursales (id, nombre) VALUES
+INSERT INTO bodegas (id, nombre) VALUES
   (1, 'Lima'),
   (2, 'Chiclayo'),
   (3, 'Trujillo'),
   (4, 'Arequipa')
 ;
 
-INSERT INTO bodegas (id, nombre, sucursal_id) VALUES
-  (1, 'Bodega LIM-1', 1),
-  (2, 'Bodega LIM-2', 1),
-  (3, 'Bodega LIM-3', 1),
-  (4, 'Bodega CIX-1', 2),
-  (5, 'Bodega CIX-2', 2),
-  (6, 'Bodega TRU-1', 3),
-  (7, 'Bodega AQP-1', 4)
+INSERT INTO sucursales (id, nombre, bodega_id) VALUES
+  (1, 'Sucursal LIM-1', 1),
+  (2, 'Sucursal LIM-2', 1),
+  (3, 'Sucursal LIM-3', 1),
+  (4, 'Sucursal CIX-1', 2),
+  (5, 'Sucursal CIX-2', 2),
+  (6, 'Sucursal TRU-1', 3),
+  (7, 'Sucursal AQP-1', 4)
 ;
