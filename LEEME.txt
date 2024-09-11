@@ -15,11 +15,11 @@ El sistema permite el registro de productos y contiene un fichero de configuraci
 1. Descarga o clona el repositorio en tu entorno local. A continuación, entra en la carpeta del proyecto.
 
 2. Ejecuta el script SQL para crear la base de datos, tablas y cargar datos de prueba.
-   Accede a tu servidor PostgreSQL e importa el script SQL ubicado en la carpeta `sql/`.
+   Accede a tu servidor PostgreSQL e importa el script SQL ubicado en la carpeta `SQL/`.
    Esto se pueda hacer desde la linea de comandos de esta manera:
 
   ```sh
-  $ psql -U [usuario] -f sql/script.sql
+  $ psql -U [usuario] -f SQL/script.sql
   ```
 
 Otra opción es ejecutar manualmente el script SQL usando un software de administración de bases de datos, como por ejemplo DBeaver o DataGrip.

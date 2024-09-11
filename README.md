@@ -20,10 +20,10 @@ This project is a web application developed in PHP that interacts with a Postgre
   $ cd products-sys
   ```
 
-2. Run the SQL script to create the database, tables and load test data. Access your PostgreSQL server and import the SQL script located in the `sql/` folder. This can be done from the command line like this:
+2. Run the SQL script to create the database, tables and load test data. Access your PostgreSQL server and import the SQL script located in the `SQL/` folder. This can be done from the command line like this:
 
   ```sh
-  $ psql -U [user] -f sql/script.sql
+  $ psql -U [user] -f SQL/script.sql
   ```
 
 Another option is to manually run the SQL script using database management software, such as DBeaver or DataGrip.
