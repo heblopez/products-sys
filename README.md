@@ -51,3 +51,10 @@ Another option is to manually run the SQL script using database management softw
 
 1. Access the application through the web browser using the URL configured on your local server.
 2. Make sure that the tables have been created correctly and the test data is available.
+
+## Project Structure
+
+- `config.php`: Configuration file where the credentials for the database connection must be added.
+- `sql/`: Folder containing the SQL scripts for the creation of tables, functions and test data.
+- `api/`: PHP source code that handles the main functionalities of the application.
+- `assets/`: Folder containing resources such as images, style sheets and javascript files.
