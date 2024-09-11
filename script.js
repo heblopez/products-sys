@@ -1,8 +1,10 @@
+let allProducts = [];
 
 document.addEventListener('DOMContentLoaded', function() {
   loadWarehouses();
   loadLocations();
   loadCurrencies();
+  loadProducts();
 })
 
 function loadWarehouses() {
@@ -50,7 +52,17 @@ function loadCurrencies() {
     .catch(error => console.error(error));
 }
 
-function validateForm(ev) {
+function loadProducts() {
+  fetch('get_products.php')
+    .then(response => response.json())
+    .then(data => {
+      allProducts = [...data];
+      console.log('productos en BD:', allProducts);
+    })
+    .catch(error => console.error(error));
+}
+
+function handleSubmit(ev) {
   ev.preventDefault();
   const form = document.getElementById('productForm');
   const codigo = form.codigo.value;
@@ -61,9 +73,9 @@ function validateForm(ev) {
   const materiales = Array.from(checkedCheckboxes).map(checkbox => checkbox.value);
 
   const descripcion = form.descripcion.value;
-  const bodegas = form.bodegas.value;
-  const sucursales = form.sucursales.value;
-  const monedas = form.monedas.value;
+  const bodega = form.bodegas.value;
+  const sucursal = form.sucursales.value;
+  const moneda = form.monedas.value;
 
   const errors = [];
 
@@ -76,7 +88,10 @@ function validateForm(ev) {
     if (codigo.length < 5 || codigo.length > 15) {
       errors.push('El código del producto debe tener entre 5 y 15 caracteres.');
     }
-    // Pendiente: Validar si existe en la BD
+
+    if (allProducts.some(product => product.codigo === codigo)) {
+      errors.push('El código del producto ya está registrado.');
+    }
   } else {
     errors.push('El código del producto no puede estar en blanco.');
   }
@@ -99,9 +114,9 @@ function validateForm(ev) {
   }
 
   !materiales.length >= 2  && errors.push('Debe seleccionar al menos dos materiales para el producto.');
-  !bodegas && errors.push('Debe seleccionar una bodega.');
-  !sucursales && errors.push('Debe seleccionar una sucursal para la bodega seleccionada.');
-  !monedas && errors.push('Debe seleccionar una moneda para el producto.');
+  !bodega && errors.push('Debe seleccionar una bodega.');
+  !sucursal && errors.push('Debe seleccionar una sucursal para la bodega seleccionada.');
+  !moneda && errors.push('Debe seleccionar una moneda para el producto.');
 
   if (descripcion) {
     if (descripcion.length < 10 || descripcion.length > 1000) {
@@ -119,15 +134,34 @@ function validateForm(ev) {
   const dataToSubmit = {
     'codigo': codigo,
     'nombre': nombre,
-    'bodega_id': bodegas,
-    'sucursal_id': sucursales,
-    'moneda_id': monedas,
+    'bodega_id': bodega,
+    'sucursal_id': sucursal,
+    'moneda_id': moneda,
     'precio': precio,
     'materiales': materiales,
     'descripcion': descripcion
   };
-  console.log('Todo OK')
-  console.log(dataToSubmit)
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'post_product.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify(dataToSubmit));
+
+  xhr.onload = function() {
+    if (xhr.status === 201) {
+      alert('Éxito! El producto se ha registrado correctamente.');
+      const data = JSON.parse(xhr.responseText);
+      allProducts = [...allProducts, data];
+      form.reset();
+    } else {
+      console.error(xhr.responseText);
+      alert('Error interno al registrar el producto. Por favor, intente de nuevo.');
+    }
+  };
+
+  xhr.onerror = function() {
+    alert('Error de conexión al registrar el producto. Por favor, intente de nuevo.');
+  };
 }
 
-document.getElementById('productForm').addEventListener('submit', validateForm);
+document.getElementById('productForm').addEventListener('submit', handleSubmit);
