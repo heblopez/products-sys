@@ -17,13 +17,14 @@ form {
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   margin: auto;
-  max-width: 600px;
+  width: 100%;
+  max-width: 700px;
 }
 
 .inputs-wrapper {
   display: grid;
   gap: 16px;
-  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
 }
 
 .checkbox-group {
@@ -41,7 +42,7 @@ h1 {
   margin-bottom: 15px;
 }
 
-.grid-cols-2 {
+.grid-cols-full {
   grid-column: span 2;
 }
 
@@ -90,4 +91,19 @@ button {
 
 button:hover {
   background-color: #138c77;
+}
+
+@media (max-width: 540px) {
+  body {
+    height: 100%;
+    padding-block: 20px;
+  }
+
+  .inputs-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-cols-full {
+    grid-column: span 1;
+  }
 }

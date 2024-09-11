@@ -25,7 +25,7 @@ El sistema permite el registro de productos y contiene un fichero de configuraci
 Otra opción es ejecutar manualmente el script SQL usando un software de administración de bases de datos, como por ejemplo DBeaver o DataGrip.
 
 2. Una vez ejecutado el script SQL, se debe configurar las credenciales de la base de datos para el uso de la aplicación web.
-   Para ello en el proyecto clonado o descargado se debe crear un nuevo archivo con el nombre 'config.php' al mismo nivel en que se encuentra el archivo 'config.example.php'.
+   Para ello en el proyecto clonado o descargado se debe crear un nuevo archivo con el nombre 'config.php' al mismo nivel en que se encuentra el archivo 'config.example.php'(dentro de la carpeta 'config').
    Luego debes copiar el contenido de este último archivo y pegarlo en el archivo 'config.php' que creaste.
    Por último edita las palabras 'YOUR_DB_NAME', 'YOUR_DB_USER', 'YOUR_DB_PASSWORD' con el nombre de la base de datos('products_sys') y tu usuario y contraseña de PostgreSQL.
    También si lo deseas puedes cambiar el host y el puerto, pero ya esas líneas ya están con los valores por defecto de PostgreSQL.

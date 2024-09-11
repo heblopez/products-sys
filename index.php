@@ -49,7 +49,7 @@
 				<input type="text" id="precio" name="precio">
 			</div>
 
-			<div class="form-group grid-cols-2">
+			<div class="form-group grid-cols-full">
 				<label>Material del Producto</label>
 				<div class="material-wrapper">
 					<div class="checkbox-group">
@@ -75,7 +75,7 @@
 				</div>
 			</div>
 
-			<div class="form-group grid-cols-2">
+			<div class="form-group grid-cols-full">
 				<label for="descripcion">Descripción</label>
 				<textarea id="descripcion" name="descripcion" rows="4"></textarea>
 			</div>

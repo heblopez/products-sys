@@ -28,10 +28,11 @@ This project is a web application developed in PHP that interacts with a Postgre
 
 Another option is to manually run the SQL script using database management software, such as DBeaver or DataGrip.
 
-3. Configure the database credentials in the ``config.php`` file. Copy the sample file and adjust the parameters:
+3. Configure the database credentials in the ``config.php`` file, which is inside the ``config`` folder. Copy the sample file and adjust the parameters:
 
   ```sh
-  $ cp config.php.example config.php
+  $ cd config
+  $ cp config.example.php config.php
   ```
 
   Open `config.php` and edit the following lines with your PostgreSQL database credentials:
