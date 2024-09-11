@@ -61,7 +61,7 @@ CREATE OR REPLACE FUNCTION registrar_producto(
     p_sucursal_id VARCHAR,
     p_moneda_id VARCHAR,
     p_precio VARCHAR,
-    p_materiales_text TEXT[],
+    p_materiales_text VARCHAR[],
     p_descripcion TEXT
 )
 RETURNS TABLE (

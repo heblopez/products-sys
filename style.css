@@ -91,20 +91,3 @@ button {
 button:hover {
   background-color: #138c77;
 }
-
-#message {
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 4px;
-  text-align: center;
-}
-
-.success {
-  background-color: #dff0d8;
-  color: #3c763d;
-}
-
-.error {
-  background-color: #f2dede;
-  color: #a94442;
-}

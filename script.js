@@ -31,6 +31,7 @@ function loadLocations() {
         const option = document.createElement('option');
         option.value = sucursal.id;
         option.text = sucursal.nombre;
+        option.dataset.bodegaId = sucursal.bodega_id;
         sucursales.appendChild(option);
       });
     })
@@ -165,3 +166,36 @@ function handleSubmit(ev) {
 }
 
 document.getElementById('productForm').addEventListener('submit', handleSubmit);
+
+function onWarehouseChange(ev) {
+  const locationsSelect = document.getElementById('sucursales');
+  const allLocations = Array.from(locationsSelect.options).map(option => {
+    return {
+      'id': option.value,
+      'nombre': option.text,
+      'bodega_id': option.dataset.bodegaId || ''
+    };
+  });
+
+  const warehouseSelected = ev.target.value;
+
+  if (warehouseSelected) {
+    const filteredLocations = allLocations.filter(location => location.bodega_id === warehouseSelected);
+
+    for (let index = 0; index < locationsSelect.length; index++) {
+      const option = locationsSelect.options[index];
+      if (option.value === "") continue;
+      filteredLocations.some((loc) => loc.id === option.value)
+        ? (option.style.display = "block")
+        : (option.style.display = "none");
+    }
+    console.log("sucursales filtradas: ", filteredLocations);
+  } else {
+    for (let index = 0; index < locationsSelect.length; index++) {
+      const option = locationsSelect.options[index];
+      option.style.display = 'block';
+    }
+  }
+}
+
+document.getElementById('bodegas').addEventListener('change', onWarehouseChange);
