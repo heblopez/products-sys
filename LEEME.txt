@@ -1,0 +1,90 @@
+# SISTEMA DE REGISTRO DE PRODUCTOS
+
+Este proyecto es una aplicación web desarrollada en PHP que interactúa con una base de datos PostgreSQL.
+El sistema permite el registro de productos y contiene un fichero de configuración para facilitar la conexión con la base de datos.
+
+## Requisitos
+
+- PHP 8.3 o superior.
+- **PostgreSQL** 14 o superior.
+- **Servidor Apache** (o cualquier otro servidor web compatible con PHP).
+- Extensión `pdo_pgsql` habilitada para conexiones a PostgreSQL desde PHP.
+
+## Instalación
+
+1. Descarga o clona el repositorio en tu entorno local. A continuación, entra en la carpeta del proyecto.
+
+2. Ejecuta el script SQL para crear la base de datos, tablas y cargar datos de prueba.
+   Accede a tu servidor PostgreSQL e importa el script SQL ubicado en la carpeta `sql/`.
+   Esto se pueda hacer desde la linea de comandos de esta manera:
+
+  ```sh
+  $ psql -U [usuario] -f sql/script.sql
+  ```
+
+Otra opción es ejecutar manualmente el script SQL usando un software de administración de bases de datos, como por ejemplo DBeaver o DataGrip.
+
+2. Una vez ejecutado el script SQL, se debe configurar las credenciales de la base de datos para el uso de la aplicación web.
+   Para ello en el proyecto clonado o descargado se debe crear un nuevo archivo con el nombre 'config.php' al mismo nivel en que se encuentra el archivo 'config.example.php'.
+   Luego debes copiar el contenido de este último archivo y pegarlo en el archivo 'config.php' que creaste.
+   Por último edita las palabras 'YOUR_DB_NAME', 'YOUR_DB_USER', 'YOUR_DB_PASSWORD' con el nombre de la base de datos('products_sys') y tu usuario y contraseña de PostgreSQL.
+   También si lo deseas puedes cambiar el host y el puerto, pero ya esas líneas ya están con los valores por defecto de PostgreSQL.
+
+3. Accede a la aplicación a través del navegador web utilizando la URL configurada en tu servidor local.
+   Asegúrate de que las tablas han sido creadas correctamente y los datos de prueba estén disponibles.
+
+--- INFORMACIÓN ADICIONAL ---:
+
+Si después de seguir los pasos descritos líneas arriba aún tienes problemas para desplegar la aplicación, es probable que se deba a la configuración de Apache para trabajar con PHP:
+Para ejecutar archivos PHP desde el navegador, debes asegurarte de que tu servidor Apache esté correctamente configurado para trabajar con PHP.
+Dependiendo del sistema operativo que estés usando, sigue las siguientes recomendaciones:
+
+### Windows
+
+Si estás usando **XAMPP**, PHP ya debería estar configurado para ejecutarse en Apache.
+Simplemente asegúrate de que Apache esté corriendo y que los archivos `.php` se ejecuten al acceder desde el navegador.
+En caso contrario, verifica que el archivo `httpd.conf` de Apache contenga las siguientes líneas:
+
+  ```apache
+  LoadModule php_module "c:/xampp/php/php7apache2_4.dll"
+  AddType application/x-httpd-php .php
+  ```
+
+Luego, reinicia Apache desde el panel de control de XAMPP.
+
+### macOS
+
+Si instalaste Apache usando **Homebrew**, es posible que necesites activar el módulo PHP y asegurarte de que Apache esté configurado para manejar archivos PHP.
+Puedes hacer esto añadiendo la siguiente línea a tu archivo de configuración de Apache (`/opt/homebrew/etc/httpd/httpd.conf`):
+
+  ```apache
+  LoadModule php_module /opt/homebrew/opt/php/lib/httpd/modules/libphp.so
+  ```
+
+Asegúrate también de que tu `DocumentRoot` esté correctamente configurado y que los archivos PHP estén habilitados en la directiva `DirectoryIndex`:
+
+  ```apache
+  DirectoryIndex index.php index.html
+  ```
+
+Después, reinicia Apache:
+
+  ```sh
+  $ sudo apachectl restart
+  ```
+
+### Linux (Ubuntu/Debian)
+
+Si instalaste Apache y PHP a través del sistema de paquetes de Ubuntu o Debian, deberías asegurarte de que el módulo PHP está habilitado:
+
+  ```bash
+  sudo a2enmod php8.3
+  sudo systemctl restart apache2
+  ```
+
+También, verifica que tu archivo de configuración de Apache (`/etc/apache2/apache2.conf`) tenga configurado `DirectoryIndex` para permitir archivos PHP:
+
+  ```apache
+  DirectoryIndex index.php index.html
+  ```
+
