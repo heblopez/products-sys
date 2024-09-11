@@ -1,5 +1,6 @@
 <?php
 include("config.php");
+// include(__DIR__ . "/config.php");
 
 $host = getenv("DB_HOST");
 $port = getenv("DB_PORT");

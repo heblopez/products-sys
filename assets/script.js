@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 function loadWarehouses() {
-  fetch('get_warehouses.php')
+  fetch('api/get_warehouses.php')
     .then(response => response.json())
     .then(data => {
       const bodegas = document.getElementById('bodegas');
@@ -23,7 +23,7 @@ function loadWarehouses() {
 }
 
 function loadLocations() {
-  fetch('get_locations.php')
+  fetch('api/get_locations.php')
     .then(response => response.json())
     .then(data => {
       const sucursales = document.getElementById('sucursales');
@@ -39,7 +39,7 @@ function loadLocations() {
 }
 
 function loadCurrencies() {
-  fetch('get_currencies.php')
+  fetch('api/get_currencies.php')
     .then(response => response.json())
     .then(data => {
       const monedas = document.getElementById('monedas');
@@ -54,7 +54,7 @@ function loadCurrencies() {
 }
 
 function loadProducts() {
-  fetch('get_products.php')
+  fetch('api/get_products.php')
     .then(response => response.json())
     .then(data => {
       allProducts = [...data];
@@ -144,7 +144,7 @@ function handleSubmit(ev) {
   };
 
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'post_product.php', true);
+  xhr.open('POST', 'api/post_product.php', true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(dataToSubmit));
 

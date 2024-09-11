@@ -1,5 +1,5 @@
 <?php
-include 'db_connection.php';
+include __DIR__ . '/../config/db_connection.php';
 
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
